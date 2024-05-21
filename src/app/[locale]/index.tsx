@@ -1,11 +1,15 @@
+import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import styles from './page.module.css';
-import { auth } from '@/auth';
-import nextLink from 'next/link';
+import { SIGN_IN_ROUTE, SIGN_OUT_ROUTE } from 'config/constants.mjs';
+import { Session } from 'next-auth';
 
-export default async function Home() {
-  const session = await auth();
+type Props = {
+  session: Session | null;
+};
 
+export default function Index({ session }: Props) {
+  const t = useTranslations('Index');
   return (
     <main className={styles.main}>
       <div className={styles.description}>
@@ -41,6 +45,7 @@ export default async function Home() {
           height={37}
           priority
         />
+        <h1>{t('title')}</h1>
       </div>
       <div className="flex flex-col bg-gray-100 rounded-md">
         <div className="p-4 font-bold bg-gray-200 rounded-t-md">
@@ -61,16 +66,11 @@ export default async function Home() {
       </div>
 
       <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+        <a href={SIGN_OUT_ROUTE} className={styles.card}>
           <h2>
-            Docs <span>-&gt;</span>
+            Signout <span>-&gt;</span>
           </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
+          <p>Logout page</p>
         </a>
 
         <a
@@ -85,16 +85,11 @@ export default async function Home() {
           <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
         </a>
 
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+        <a href={SIGN_IN_ROUTE} className={styles.card}>
           <h2>
-            Templates <span>-&gt;</span>
+            SignIn <span>-&gt;</span>
           </h2>
-          <p>Explore starter templates for Next.js.</p>
+          <p>SignIn page</p>
         </a>
 
         <a
