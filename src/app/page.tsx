@@ -1,7 +1,11 @@
 import Image from 'next/image';
 import styles from './page.module.css';
+import { auth } from '@/auth';
+import nextLink from 'next/link';
 
-export default function Home() {
+export default async function Home() {
+  const session = await auth();
+
   return (
     <main className={styles.main}>
       <div className={styles.description}>
@@ -37,6 +41,23 @@ export default function Home() {
           height={37}
           priority
         />
+      </div>
+      <div className="flex flex-col bg-gray-100 rounded-md">
+        <div className="p-4 font-bold bg-gray-200 rounded-t-md">
+          Current Session
+        </div>
+        <pre className="py-6 px-4 whitespace-pre-wrap break-all">
+          {JSON.stringify(session, null, 2)}
+        </pre>
+        {session ? (
+          <h1>
+            <a href="/api/frontend/auth/signout">Sign Out</a>
+          </h1>
+        ) : (
+          <h1>
+            <a href="/api/frontend/auth/signin">Sign In</a>
+          </h1>
+        )}
       </div>
 
       <div className={styles.grid}>
