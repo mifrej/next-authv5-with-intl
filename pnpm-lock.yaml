@@ -14,6 +14,9 @@ importers:
       next-auth:
         specifier: 5.0.0-beta.18
         version: 5.0.0-beta.18(next@14.2.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)
+      next-easy-middlewares:
+        specifier: ^1.0.10
+        version: 1.0.10(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       next-intl:
         specifier: ^3.14.0
         version: 3.14.0(next@14.2.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)
@@ -1153,6 +1156,9 @@ packages:
         optional: true
       nodemailer:
         optional: true
+
+  next-easy-middlewares@1.0.10:
+    resolution: {integrity: sha512-Y6OdTCGCsB1y4bhSrlUe1IbY3R4Qb41w7GL6UfPvsB0JlvJ5HldRSEV5hsE8GrbUxw7a7D7eiOZzmAJWaMZmjA==}
 
   next-intl@3.14.0:
     resolution: {integrity: sha512-Z/7Y7DSAivEm3pRYlUyOEc0LGV/xCdE7p+DqWdyhLcdxVxMwT1CZVXIqjdWsC0OOEuWeJiGzoPwMCeDpp4urEA==}
@@ -2885,6 +2891,18 @@ snapshots:
       '@auth/core': 0.31.0
       next: 14.2.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       react: 18.3.1
+
+  next-easy-middlewares@1.0.10(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
+    dependencies:
+      next: 14.2.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+    transitivePeerDependencies:
+      - '@babel/core'
+      - '@opentelemetry/api'
+      - '@playwright/test'
+      - babel-plugin-macros
+      - react
+      - react-dom
+      - sass
 
   next-intl@3.14.0(next@14.2.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1):
     dependencies:

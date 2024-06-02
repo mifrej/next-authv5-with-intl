@@ -12,6 +12,7 @@
   "dependencies": {
     "next": "14.2.3",
     "next-auth": "5.0.0-beta.18",
+    "next-easy-middlewares": "^1.0.10",
     "next-intl": "^3.14.0",
     "pino": "8.19.0",
     "pino-pretty": "11.0.0",

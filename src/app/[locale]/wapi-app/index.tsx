@@ -23,7 +23,7 @@ export default function Index({ session }: Props) {
             target="_blank"
             rel="noopener noreferrer"
           >
-            By{' '}
+            By{" "}
             <Image
               src="/vercel.svg"
               alt="Vercel Logo"
@@ -45,7 +45,7 @@ export default function Index({ session }: Props) {
           height={37}
           priority
         />
-        <h1>{t('title')}</h1>
+        <h1>{t("title")}</h1>
       </div>
       <div className="flex flex-col bg-gray-100 rounded-md">
         <div className="p-4 font-bold bg-gray-200 rounded-t-md">
@@ -73,16 +73,11 @@ export default function Index({ session }: Props) {
           <p>Logout page</p>
         </a>
 
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+        <a href="/curve/27308">
           <h2>
-            Learn <span>-&gt;</span>
+            Wapi Curve 27308 <span>-&gt;</span>
           </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
+          <p>Curve details</p>
         </a>
 
         <a href={SIGN_IN_ROUTE} className={styles.card}>
