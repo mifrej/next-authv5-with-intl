@@ -3,27 +3,35 @@ import 'next-auth/jwt';
 
 import GitHub from 'next-auth/providers/github';
 import type { NextAuthConfig } from 'next-auth';
+import volueIdentity from './volue-provider';
 
 const config = {
   theme: { logo: 'https://authjs.dev/img/logo-sm.png' },
-  providers: [GitHub],
+  providers: [volueIdentity],
   basePath: '/api/frontend/auth',
   callbacks: {
-    authorized({ request, auth }) {
-      const { pathname } = request.nextUrl;
-      if (pathname === '/middleware-example') return !!auth;
-      return true;
+    authorized({ auth }) {
+      return Boolean(auth);
     },
-    jwt({ token, trigger, session, account }) {
-      if (trigger === 'update') token.name = session.user.name;
-      if (account?.provider === 'keycloak') {
-        return { ...token, accessToken: account.access_token };
+    jwt({ token, account }) {
+      if (account) {
+        return {
+          ...token,
+          accessToken: account.access_token,
+          accessTokenExpiresAt: account.expires_at,
+        };
       }
       return token;
     },
-    async session({ session, token }) {
-      if (token?.accessToken) {
+    async redirect({ url, baseUrl }) {
+      return url;
+    },
+    session({ session, token }) {
+      if (token?.accessToken && token?.accessTokenExpiresAt) {
+        // eslint-disable-next-line no-param-reassign
         session.accessToken = token.accessToken;
+        // eslint-disable-next-line no-param-reassign
+        session.accessTokenExpiresAt = token.accessTokenExpiresAt;
       }
       return session;
     },
@@ -39,11 +47,13 @@ export const { handlers, auth, signIn, signOut } = NextAuth(config);
 declare module 'next-auth' {
   interface Session {
     accessToken?: string;
+    accessTokenExpiresAt?: number;
   }
 }
 
 declare module 'next-auth/jwt' {
   interface JWT {
     accessToken?: string;
+    accessTokenExpiresAt?: number;
   }
 }

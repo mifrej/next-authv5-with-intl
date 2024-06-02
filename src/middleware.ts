@@ -37,11 +37,13 @@ const authMiddleware = auth((req) => {
   console.log('=====================================');
   const isSignInPage = testPathnameRegex([SIGN_IN_ROUTE], req.nextUrl.pathname);
   const session = req.auth;
+  console.log(' ');
   console.log(
     '<<<<<<<<<<<<<<<<< session:',
     session,
     'session >>>>>>>>>>>>>>>>>>>',
   );
+  console.log(' ');
 
   // Redirect to sign-in page if not authenticated
   if (!session && !isSignInPage) {

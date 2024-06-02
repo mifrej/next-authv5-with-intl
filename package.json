@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev -p 7777 | pino-pretty -t -c",
     "build": "next build",
     "start": "next start",
     "lint": "eslint"
@@ -13,6 +13,8 @@
     "next": "14.2.3",
     "next-auth": "5.0.0-beta.18",
     "next-intl": "^3.14.0",
+    "pino": "8.19.0",
+    "pino-pretty": "11.0.0",
     "react": "18.3.1",
     "react-dom": "18.3.1"
   },
